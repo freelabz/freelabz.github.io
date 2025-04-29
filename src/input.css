@@ -1,3 +1,38 @@
+/* Importe les styles de base, composants et utilitaires de Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Styles personnalisés ajoutés */
+@layer base {
+  html {
+    @apply scroll-smooth; /* Applique le défilement doux via Tailwind */
+  }
+
+  /* Style pour la barre de défilement (optionnel) */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #1F2937; /* Utilise la valeur hexa directe ou theme('colors.freelabz-card') si configuré */
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #FFD700; /* Utilise la valeur hexa directe ou theme('colors.freelabz-yellow') */
+    border-radius: 10px;
+    border: 2px solid #1F2937; /* Utilise la valeur hexa directe ou theme('colors.freelabz-card') */
+  }
+  @media (min-width: 768px) {
+    .md-flex {
+      display: flex !important;
+    }
+  }
+}
+
+/* Vous pouvez ajouter des composants personnalisés ici avec @layer components si besoin */
+/* Exemple :
+@layer components {
+  .btn-primary {
+    @apply py-2 px-4 bg-freelabz-yellow text-freelabz-text-dark rounded;
+  }
+}
+*/
