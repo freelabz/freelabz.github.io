@@ -6,7 +6,11 @@
 /* Styles personnalisés ajoutés */
 @layer base {
   html {
-    @apply scroll-smooth; /* Applique le défilement doux via Tailwind */
+    @apply scroll-smooth;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Space Grotesk', ui-sans-serif, system-ui;
   }
 
   /* Style pour la barre de défilement (optionnel) */
@@ -26,6 +30,11 @@
       display: flex !important;
     }
   }
+}
+
+.dot-grid-bg {
+  background-image: radial-gradient(circle, #374151 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 /* Vous pouvez ajouter des composants personnalisés ici avec @layer components si besoin */

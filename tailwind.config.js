@@ -15,10 +15,7 @@ module.exports = {
         'freelabz-text-dark': '#000000', // Texte noir pour les éléments sur fond jaune
       },
       fontFamily: {
-        // Tailwind utilise par défaut des polices 'sans' très professionnelles.
-        // Si vous voulez une police spécifique (ex: Inter, Lato), installez-la
-        // et décommentez/ajoutez la ligne suivante :
-        // sans: ['Inter', 'ui-sans-serif', 'system-ui', ...require('tailwindcss/defaultTheme').fontFamily.sans],
+        'display': ['Space Grotesk', 'ui-sans-serif', 'system-ui'],
       }
     },
   },
