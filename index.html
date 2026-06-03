@@ -197,7 +197,7 @@
 <body class="bg-freelabz-bg text-freelabz-text font-[Open Sans]">
 
     <!-- Sticky Navbar -->
-    <header class="sticky top-0 z-50 bg-freelabz-bg bg-opacity-90 backdrop-blur-sm" style="box-shadow: 0 1px 0 rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);">
+    <header class="sticky top-0 bg-freelabz-bg bg-opacity-90 backdrop-blur-sm" style="z-index:300;" style="box-shadow: 0 1px 0 rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);">
         <nav class="container mx-auto px-6 flex justify-between items-center" style="height: 5.5rem; overflow: visible;">
 
             <!-- Logo -->
@@ -446,11 +446,20 @@
                         </div>
                     </div>
 
+                </div>
+
+                <!-- Voir plus button -->
+                <div style="text-align:center; margin-top:3rem;">
+                    <button id="voir-plus-btn" onclick="toggleMoreCards()" class="border border-gray-600 text-freelabz-text font-semibold py-2 px-8 rounded hover:border-freelabz-yellow hover:text-freelabz-yellow transition duration-300" data-i18n="prestations.voir_plus">Voir plus</button>
+                </div>
+
+                <!-- Hidden extra cards -->
+                <div id="extra-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8" style="display:none;">
                     <!-- Carte Accompagnement DevOps -->
                     <div class="bg-freelabz-bg p-6 rounded-lg border border-gray-700 transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 hover:border-freelabz-yellow">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-freelabz-yellow mb-3">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
                             </svg>
                             <h3 class="text-xl font-semibold text-white mb-3" data-i18n="prestations.devops.title">Accompagnement DevOps</h3>
                             <p class="text-freelabz-text mb-4 text-md" data-i18n="prestations.devops.desc">
@@ -495,6 +504,7 @@
                     </div>
                 </div>
             </div>
+            </div>
         </section>
 
         <!-- Produits Section -->
@@ -520,7 +530,7 @@
                             <p class="text-freelabz-text mb-4 text-md" data-i18n="produits.secator.desc">
                                 Outil de pentest automatisé conçu pour les pentesters. Simplifie le lancement d'outils et l'automatisation de workflows répétitifs (reconnaissance, scan) via des fichiers YAML configurables.
                             </p>
-                            <img id="secator-gif" src="https://raw.githubusercontent.com/freelabz/secator/main/images/demo.gif" alt="Secator demo" class="w-full rounded-md mb-4 cursor-pointer">
+                            <img id="secator-gif" src="https://raw.githubusercontent.com/freelabz/secator/main/images/demo.gif" alt="Secator demo" class="w-full rounded-md cursor-pointer">
                         </div>
                          <a href="https://github.com/freelabz/secator" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block text-center bg-gray-700 text-white font-semibold py-2 px-4 rounded hover:bg-freelabz-yellow hover:text-freelabz-text-dark transition duration-300">
                              <span data-i18n="produits.secator.link">Voir sur GitHub</span>
@@ -544,6 +554,7 @@
                             <p class="text-freelabz-text mb-4 text-md" data-i18n="produits.cloud.desc">
                                 Plateforme de sécurité offensive configurable. Permet aux entreprises de lancer des scans sur mesure et aux pentesters de gérer leurs missions, d'analyser les données (via IA) et de générer des rapports. Option self-hosted disponible.
                             </p>
+                            <img id="secator-cloud-screenshot" src="./assets/secator_cloud_screenshot.png" alt="Secator Cloud screenshot" class="w-full rounded-md cursor-pointer">
                         </div>
                          <a href="#contact" class="mt-4 inline-block text-center bg-gray-700 text-white font-semibold py-2 px-4 rounded hover:bg-freelabz-yellow hover:text-freelabz-text-dark transition duration-300" data-i18n="produits.cloud.link">Découvrir la plateforme</a>
                     </div>
@@ -613,7 +624,7 @@
                 </h2>
                 <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16">
                     <a href="https://arxone.com/" target="_blank" rel="noopener noreferrer" aria-label="ARX ONE">
-                        <img src="./assets/client_arxone.svg" alt="ARX ONE" class="client-logo h-12 w-auto opacity-90" style="filter: invert(1);">
+                        <img src="./assets/client_arxone.svg" alt="ARX ONE" class="client-logo h-12 w-auto opacity-90">
                     </a>
                     <a href="https://www.ochinfo.fr/" target="_blank" rel="noopener noreferrer" aria-label="OCH">
                         <img src="./assets/client_och.jpg" alt="OCH" class="client-logo h-12 w-auto opacity-90">
@@ -677,10 +688,10 @@
 
     <!-- Lightbox -->
     <div id="gif-lightbox" style="display:none; position:fixed; top:5.5rem; left:0; right:0; bottom:0; z-index:200; background:rgba(0,0,0,0.95); align-items:center; justify-content:center;">
-        <div style="text-align:center;">
-            <p style="color:#FFE566; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:0.95rem; letter-spacing:0.05em; margin-bottom:10px;" data-i18n="lightbox.title">Secator in action !</p>
-            <div id="gif-lightbox-frame" class="relative shadow-2xl" style="border: 1px solid #FFE566; border-radius: 6px; padding: 8px;">
-                <button id="gif-lightbox-close" aria-label="Fermer" style="position:absolute; top:-18px; right:-18px; width:36px; height:36px; background:#FFE566; color:#000; border:none; border-radius:50%; font-size:1.25rem; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">&times;</button>
+<div style="text-align:center;">
+            <p id="lightbox-title" style="color:#FFE566; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:0.95rem; letter-spacing:0.05em; margin-bottom:10px;">Secator in action !</p>
+            <div id="gif-lightbox-frame" class="relative shadow-2xl" style="border: 1px solid rgba(255,229,102,0.25); border-radius: 6px;">
+                <button id="gif-lightbox-close" aria-label="Fermer" style="position:absolute; top:-18px; right:-18px; width:36px; height:36px; background:rgba(255,229,102,0.5); color:#fff; border:none; border-radius:50%; font-size:1.25rem; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">&times;</button>
                 <img id="gif-lightbox-img" src="" alt="Secator demo" style="display:block; max-width:90vw; max-height:calc(100vh - 5.5rem - 6rem); border-radius:4px;">
             </div>
         </div>
@@ -729,6 +740,17 @@
     </footer>
 
     <script>
+        // Voir plus / See more toggle
+        function toggleMoreCards() {
+            var cards = document.getElementById('extra-cards');
+            var btn = document.getElementById('voir-plus-btn');
+            cards.style.display = 'grid';
+            btn.style.display = 'none';
+            setTimeout(function() {
+                window.scrollBy({ top: 200, behavior: 'smooth' });
+            }, 50);
+        }
+
         // Lang dropdown
         function toggleLangMenu(v) {
             var btn = document.getElementById('lang-btn-' + v);
@@ -755,8 +777,18 @@
         const gifLightboxImg = document.getElementById('gif-lightbox-img');
         const gifLightboxFrame = document.getElementById('gif-lightbox-frame');
         function closeLightbox() { gifLightbox.style.display = 'none'; document.body.style.overflow = ''; }
+        document.getElementById('secator-cloud-screenshot').addEventListener('click', function() {
+            gifLightboxImg.src = this.src;
+            document.getElementById('lightbox-title').textContent = 'A scan in Secator Cloud';
+            gifLightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            gifLightboxFrame.classList.remove('lightbox-pop');
+            void gifLightboxFrame.offsetWidth;
+            gifLightboxFrame.classList.add('lightbox-pop');
+        });
         document.getElementById('secator-gif').addEventListener('click', function() {
             gifLightboxImg.src = this.src;
+            document.getElementById('lightbox-title').textContent = 'Secator in action !';
             gifLightbox.style.display = 'flex';
             document.body.style.overflow = 'hidden';
             gifLightboxFrame.classList.remove('lightbox-pop');
@@ -947,6 +979,8 @@
                 'formations.linux.desc': 'Administration système Linux, gestion des réseaux, firewalls, VPN, monitoring d\'infrastructure. Pour les administrateurs systèmes et réseaux souhaitant approfondir leurs compétences.',
                 'formations.title': 'Formations',
                 'formations.desc': 'Formations pratiques en cybersécurité, DevOps, programmation (Python, Go) et administration Linux & réseau. Adaptées à tous les niveaux, du débutant à l\'expert.',
+                'prestations.voir_plus': 'Voir plus',
+                'prestations.voir_moins': 'Voir moins',
                 'prestations.devops.title': 'Accompagnement DevOps',
                 'prestations.devops.desc': 'Mise en place et optimisation de pipelines CI/CD, intégration de la sécurité aux processus de déploiement (DevSecOps), automatisation et bonnes pratiques pour des livraisons rapides et sécurisées.',
                 'prestations.cloud.title': 'Accompagnement Cloud',
@@ -1019,6 +1053,8 @@
                 'formations.linux.desc': 'Linux system administration, network management, firewalls, VPN, infrastructure monitoring. For system and network administrators looking to deepen their skills.',
                 'formations.title': 'Training',
                 'formations.desc': 'Practical training in cybersecurity, DevOps, programming (Python, Go) and Linux & network administration. Adapted to all levels, from beginner to expert.',
+                'prestations.voir_plus': 'See more',
+                'prestations.voir_moins': 'See less',
                 'prestations.devops.title': 'DevOps consulting',
                 'prestations.devops.desc': 'Setup and optimization of CI/CD pipelines, integration of security into deployment processes (DevSecOps), automation and best practices for fast and secure releases.',
                 'prestations.cloud.title': 'Cloud consulting',

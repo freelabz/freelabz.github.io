@@ -5,10 +5,10 @@
         <g id="Layer-1" serif:id="Layer 1">
             <g transform="matrix(11,0,0,11,16.9404,11.2355)">
             </g>
-            <text x="0px" y="11.235px" style="font-family:'CenturyGothic-Bold', 'Century Gothic', sans-serif;font-weight:700;font-size:11px;">arx</text>
+            <text x="0px" y="11.235px" style="font-family:'CenturyGothic-Bold', 'Century Gothic', sans-serif;font-weight:700;font-size:11px;fill:white;">arx</text>
             <g transform="matrix(11,0,0,11,43.7798,11.2355)">
             </g>
-            <text x="23.096px" y="11.235px" style="font-family:'CenturyGothic-Bold', 'Century Gothic', sans-serif;font-weight:700;font-size:11px;">one</text>
+            <text x="23.096px" y="11.235px" style="font-family:'CenturyGothic-Bold', 'Century Gothic', sans-serif;font-weight:700;font-size:11px;fill:white;">one</text>
             <g transform="matrix(1,0,0,1,21.3067,8.1721)">
                 <path d="M0,0C0,0.809 -0.656,1.466 -1.467,1.466C-2.275,1.466 -2.932,0.809 -2.932,0C-2.932,-0.81 -2.275,-1.466 -1.467,-1.466C-0.656,-1.466 0,-0.81 0,0" style="fill:rgb(246,140,30);fill-rule:nonzero;"/>
             </g>
