@@ -75,6 +75,29 @@
             animation: lightboxPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
 
+        .client-logo {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .client-logo:hover {
+            transform: scale(1.08);
+            opacity: 1;
+        }
+
+        .mobile-nav-controls { display: none; }
+        @media (max-width: 767px) {
+            .hero-h1 { font-size: 2.8rem !important; }
+            .hero-h1sub { font-size: 1.6rem !important; }
+            .hero-content-wrapper { max-width: 100% !important; }
+            .mobile-nav-controls { display: flex !important; align-items: center; gap: 8px; }
+            body { overflow-x: hidden; -ms-overflow-style: none; scrollbar-width: none; }
+            body::-webkit-scrollbar { display: none; }
+            #site-logo { height: 5.5rem !important; }
+        }
+
+        html {
+            scroll-padding-top: 4rem;
+        }
+
         /* Scroll reveal */
         .reveal {
             opacity: 0;
@@ -97,6 +120,48 @@
         .hover\:bg-freelabz-yellow:hover { background-color: #DFB040 !important; }
         .hover\:border-freelabz-yellow:hover { border-color: #DFB040 !important; }
         .text-white { color: #EAEAE4 !important; }
+
+        /* Scroll indicator */
+        #scroll-indicator {
+            position: absolute; bottom: 0.5rem; left: 50%; transform: translateX(-50%);
+            opacity: 0.5; transition: opacity 0.6s ease;
+            animation: scrollBounce 1.8s ease-in-out infinite;
+            cursor: pointer;
+        }
+        #scroll-indicator.hidden-arrow { opacity: 0; pointer-events: none; }
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* Lang dropdown */
+        .lang-dropdown { position: relative; }
+        .lang-btn {
+            display: flex; align-items: center; gap: 4px;
+            background: none; border: 1px solid rgba(255,255,255,0.18); border-radius: 6px;
+            color: inherit; cursor: pointer; font-size: 0.78rem; font-weight: 600;
+            letter-spacing: 0.08em; padding: 4px 8px;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .lang-btn:hover { border-color: #DFB040; color: #DFB040; }
+        .lang-btn svg { width: 10px; height: 10px; transition: transform 0.2s; }
+        .lang-btn.open svg { transform: rotate(180deg); }
+        .lang-menu {
+            display: none; position: absolute; top: calc(100% + 6px); right: 0;
+            background: #1a2233; border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 6px; overflow: hidden; min-width: 52px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            z-index: 200;
+        }
+        .lang-menu.open { display: block; }
+        .lang-option {
+            display: block; width: 100%; text-align: center;
+            padding: 6px 12px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+            background: none; border: none; color: rgba(255,255,255,0.6); cursor: pointer;
+            transition: background 0.15s, color 0.15s;
+        }
+        .lang-option:hover { background: rgba(255,255,255,0.06); color: #DFB040; }
+        .lang-option.active { color: #DFB040; }
 
         .handwritten {
             font-family: 'Caveat', cursive;
@@ -132,7 +197,7 @@
 <body class="bg-freelabz-bg text-freelabz-text font-[Open Sans]">
 
     <!-- Sticky Navbar -->
-    <header class="sticky top-0 z-50 bg-freelabz-bg bg-opacity-90 backdrop-blur-sm shadow-md">
+    <header class="sticky top-0 z-50 bg-freelabz-bg bg-opacity-90 backdrop-blur-sm" style="box-shadow: 0 1px 0 rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);">
         <nav class="container mx-auto px-6 flex justify-between items-center" style="height: 5.5rem; overflow: visible;">
 
             <!-- Logo -->
@@ -144,25 +209,49 @@
 
             <!-- Menu -->
             <div class="hidden md:flex space-x-6 items-center">
-                <a href="#prestations" class="hover:text-freelabz-yellow transition duration-300" data-i18n="nav.prestations">Prestations</a>
+                <a href="#prestations" class="hover:text-freelabz-yellow transition duration-300" data-i18n="nav.prestations">Services</a>
                 <a href="#produits" class="hover:text-freelabz-yellow transition duration-300" data-i18n="nav.produits">Produits</a>
                 <a href="#equipe" class="hover:text-freelabz-yellow transition duration-300" data-i18n="nav.equipe">Équipe</a>
                 <a href="#confiance" class="hover:text-freelabz-yellow transition duration-300" data-i18n="nav.clients">Clients</a>
                 <a href="https://discord.gg/nyHjC2aTrq" target="_blank" rel="noopener noreferrer" aria-label="Freelabz sur Discord" title="Join us on Discord !">
                     <svg class="w-6 h-6 text-freelabz-text hover:text-freelabz-yellow transition duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.061 18.076.083 18.094.108 18.11a19.9 19.9 0 0 0 5.993 3.03.077.077 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
                 </a>
-                <div id="lang-toggle" style="display:flex; align-items:center; gap:4px; font-size:0.85rem; letter-spacing:0.05em;">
-                    <button id="lang-fr" onclick="applyLanguage('fr')" style="background:none; border:none; cursor:pointer; color:inherit; padding:2px 4px; font-weight:700; opacity:1; transition:opacity 0.2s;">FR</button>
-                    <span style="opacity:0.4;">|</span>
-                    <button id="lang-en" onclick="applyLanguage('en')" style="background:none; border:none; cursor:pointer; color:inherit; padding:2px 4px; font-weight:400; opacity:0.5; transition:opacity 0.2s;">EN</button>
+                <a href="https://github.com/freelabz" target="_blank" rel="noopener noreferrer" aria-label="Freelabz sur GitHub">
+                    <svg class="w-6 h-6 text-freelabz-text hover:text-freelabz-yellow transition duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+                </a>
+                <div class="lang-dropdown" id="lang-dropdown-desktop">
+                    <button class="lang-btn" id="lang-btn-desktop" onclick="toggleLangMenu('desktop')">
+                        <span id="lang-label-desktop">FR</span>
+                        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M1 1l4 4 4-4"/></svg>
+                    </button>
+                    <div class="lang-menu" id="lang-menu-desktop">
+                        <button class="lang-option active" data-lang="fr" onclick="selectLang('fr')">FR</button>
+                        <button class="lang-option" data-lang="en" onclick="selectLang('en')">EN</button>
+                    </div>
                 </div>
-                <a href="#contact" class="bg-freelabz-yellow text-freelabz-text-dark font-semibold py-2 px-4 rounded hover:bg-opacity-80 transition duration-300" data-i18n="nav.contact">Nous Contacter</a>
+                <a href="#contact" class="bg-freelabz-yellow text-freelabz-text-dark font-semibold py-2 px-4 rounded hover:bg-opacity-80 transition duration-300" data-i18n="nav.contact">Nous contacter</a>
             </div>
 
-            <!-- Mobile menu button -->
-            <div class="md:hidden">
-                <button id="menu-btn" class="text-white focus:outline-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <!-- Mobile: Discord + lang toggle + hamburger -->
+            <div class="mobile-nav-controls">
+                <a href="https://discord.gg/nyHjC2aTrq" target="_blank" rel="noopener noreferrer" aria-label="Freelabz sur Discord">
+                    <svg style="width:24px;height:24px;" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.061 18.076.083 18.094.108 18.11a19.9 19.9 0 0 0 5.993 3.03.077.077 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                </a>
+                <a href="https://github.com/freelabz" target="_blank" rel="noopener noreferrer" aria-label="Freelabz sur GitHub">
+                    <svg style="width:24px;height:24px;" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+                </a>
+                <div class="lang-dropdown" id="lang-dropdown-mobile">
+                    <button class="lang-btn" id="lang-btn-mobile" onclick="toggleLangMenu('mobile')">
+                        <span id="lang-label-mobile">FR</span>
+                        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M1 1l4 4 4-4"/></svg>
+                    </button>
+                    <div class="lang-menu" id="lang-menu-mobile">
+                        <button class="lang-option active" data-lang="fr" onclick="selectLang('fr')">FR</button>
+                        <button class="lang-option" data-lang="en" onclick="selectLang('en')">EN</button>
+                    </div>
+                </div>
+                <button id="menu-btn" style="background:none; border:none; cursor:pointer; color:white; padding:0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:28px;height:28px;">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
                 </button>
@@ -171,29 +260,31 @@
 
         <!-- Mobile menu -->
         <div id="mobile-menu" class="md:hidden hidden bg-freelabz-card absolute top-full left-0 w-full z-50">
-            <a href="#prestations" class="block px-6 py-3 text-white hover:bg-freelabz-bg hover:text-freelabz-yellow border-b border-gray-700" data-i18n="nav.prestations">Prestations</a>
+            <a href="#prestations" class="block px-6 py-3 text-white hover:bg-freelabz-bg hover:text-freelabz-yellow border-b border-gray-700" data-i18n="nav.prestations">Services</a>
             <a href="#produits" class="block px-6 py-3 text-white hover:bg-freelabz-bg hover:text-freelabz-yellow border-b border-gray-700" data-i18n="nav.produits">Produits</a>
             <a href="#equipe" class="block px-6 py-3 text-white hover:bg-freelabz-bg hover:text-freelabz-yellow border-b border-gray-700" data-i18n="nav.equipe">Notre Équipe</a>
             <a href="#confiance" class="block px-6 py-3 text-white hover:bg-freelabz-bg hover:text-freelabz-yellow border-b border-gray-700" data-i18n="nav.clients">Nos Clients</a>
-            <a href="#contact" class="block px-6 py-3 bg-freelabz-yellow text-freelabz-text-dark font-semibold hover:bg-opacity-80" data-i18n="nav.contact">Nous Contacter</a>
+            <a href="#contact" class="block px-6 py-3 bg-freelabz-yellow text-freelabz-text-dark font-semibold hover:bg-opacity-80" data-i18n="nav.contact">Nous contacter</a>
         </div>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section class="relative py-16">
+        <section class="relative" style="min-height: calc(100vh - 5.5rem); display: flex; align-items: center;">
             <div class="dot-grid-bg absolute inset-0 opacity-20 pointer-events-none"></div>
 
-            <div class="container mx-auto px-6 text-center relative z-10">
-            <h1 class="text-4xl md:text-6xl text-white mb-4 leading-tight" style="font-family:'Work Sans',sans-serif; font-weight:400; letter-spacing:0.01em; font-size:3.2rem;" data-i18n-html="hero.h1">
+            <div class="container mx-auto px-6 text-center relative z-10" style="padding-top: 3rem; padding-bottom: 3rem;">
+            <div class="hero-content-wrapper" style="max-width:80%; margin:0 auto;">
+            <h1 class="hero-h1 text-4xl md:text-6xl text-white mb-4 leading-tight" style="font-family:'Work Sans',sans-serif; font-weight:400; letter-spacing:-0.01em; font-size:4rem;" data-i18n-html="hero.h1">
                 Cybersécurité <span class="text-freelabz-yellow" style="font-weight:700;">offensive</span>
             </h1>
-            <p class="text-3xl md:text-5xl text-white mb-2 leading-tight" style="font-family:'Work Sans',sans-serif; font-weight:400; font-size:2.6rem; letter-spacing:0.005em;" data-i18n-html="hero.h1sub">
+            <p class="hero-h1sub text-3xl md:text-5xl text-white mb-2 leading-tight" style="font-family:'Work Sans',sans-serif; font-weight:400; font-size:3.2rem; letter-spacing:-0.01em; line-height:1.4;" data-i18n-html="hero.h1sub">
                 <span style="position:relative; display:inline-block;">pour tous<svg style="position:absolute; left:0; bottom:-6px; width:100%; height:10px; opacity:0.5;" viewBox="0 0 100 10" preserveAspectRatio="none" fill="none"><path d="M2,8 C25,2 75,2 98,8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span>, car la meilleure défense, c'est l'attaque !
             </p>
-            <p class="text-lg md:text-xl max-w-3xl mx-auto" style="color: rgba(229,231,235,0.65); margin-top: 3rem; font-family:'Work Sans',sans-serif; font-weight:400; font-size:1.15rem;" data-i18n-html="hero.subtitle">
+            <p class="text-lg md:text-xl" style="color: rgba(229,231,235,0.65); margin-top: 3rem; font-family:'Work Sans',sans-serif; font-weight:400; font-size:1.15rem;" data-i18n-html="hero.subtitle">
                 Freelabz sécurise vos actifs numériques via des <strong>audits</strong> experts et des <strong>tests d'intrusion</strong> pointus. Nous développons aussi des <strong>outils</strong> et <strong>produits</strong> pour tous pour contribuer au développement de la cybersécurité offensive.
             </p>
+            </div>
             </br>
             </br>
             </br>
@@ -235,7 +326,13 @@
             </div>
             <div class="py-8 space-y-4 sm:space-y-0 sm:space-x-4">
                 <a href="#prestations" class="inline-block w-full sm:w-auto bg-freelabz-yellow text-freelabz-text-dark font-semibold py-3 px-6 rounded hover:bg-opacity-80 transition duration-300" data-i18n="hero.cta_services">Découvrir nos services</a>
-                <a href="#produits" class="inline-block w-full sm:w-auto border border-freelabz-yellow text-freelabz-yellow font-semibold py-3 px-6 rounded hover:bg-freelabz-yellow hover:text-freelabz-text-dark transition duration-300" data-i18n="hero.cta_tools">Explorer nos outils</a>
+                <a href="#produits" class="inline-block w-full sm:w-auto border border-freelabz-yellow text-freelabz-yellow font-semibold py-3 px-6 rounded hover:bg-freelabz-yellow hover:text-freelabz-text-dark transition duration-300" data-i18n="hero.cta_tools">Explorer nos produits</a>
+            </div>
+            <!-- Scroll indicator -->
+            <div id="scroll-indicator" onclick="document.getElementById('prestations').scrollIntoView({behavior:'smooth'})">
+                <svg width="40" height="40" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 10l8 8 8-8"/>
+                </svg>
             </div>
             </div>
         </section>
@@ -244,7 +341,7 @@
         <section id="prestations" class="py-20 bg-freelabz-card">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12" data-i18n-html="prestations.h2">
-                    Nos <span class="text-freelabz-yellow">prestations</span> de cybersécurité
+                    Nos <span class="text-freelabz-yellow">services</span>
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Carte Audit Surface d'Attaque -->
@@ -253,7 +350,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-freelabz-yellow mb-3">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
                             </svg>
-                             <h3 class="text-xl font-semibold text-white mb-3" data-i18n="prestations.card1.title">Audit surface d'attaque externe</h3>
+                             <h3 class="text-xl font-semibold text-white mb-3" data-i18n="prestations.card1.title">Audit de surface d'attaque externe</h3>
                             <p class="text-freelabz-text mb-4 text-md" data-i18n="prestations.card1.desc">
                                 Identification exhaustive de vos actifs exposés (sous-domaines, services, sites web), OSINT et analyse de vulnérabilités initiales pour une vue complète de votre exposition.
                             </p>
@@ -349,8 +446,53 @@
                         </div>
                     </div>
 
-                    <!-- Ajoutez une carte vide si vous avez 5 prestations pour équilibrer la dernière ligne sur grand écran -->
-                     <div class="hidden lg:block"></div>
+                    <!-- Carte Accompagnement DevOps -->
+                    <div class="bg-freelabz-bg p-6 rounded-lg border border-gray-700 transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 hover:border-freelabz-yellow">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-freelabz-yellow mb-3">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                            </svg>
+                            <h3 class="text-xl font-semibold text-white mb-3" data-i18n="prestations.devops.title">Accompagnement DevOps</h3>
+                            <p class="text-freelabz-text mb-4 text-md" data-i18n="prestations.devops.desc">
+                                Mise en place et optimisation de pipelines CI/CD, intégration de la sécurité aux processus de déploiement (DevSecOps), automatisation et bonnes pratiques pour des livraisons rapides et sécurisées.
+                            </p>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#contact" class="flex-1 text-center bg-gray-700 text-white font-semibold py-2 px-4 rounded hover:bg-freelabz-yellow hover:text-freelabz-text-dark transition duration-300" data-i18n="prestations.quote">Demander un devis</a>
+                        </div>
+                    </div>
+
+                    <!-- Carte Accompagnement Cloud -->
+                    <div class="bg-freelabz-bg p-6 rounded-lg border border-gray-700 transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 hover:border-freelabz-yellow">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-freelabz-yellow mb-3">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-2.43-2.43 3.75 3.75 0 00-4.952-4.33 3 3 0 00-5.196 1.33A4.5 4.5 0 002.25 15z" />
+                            </svg>
+                            <h3 class="text-xl font-semibold text-white mb-3" data-i18n="prestations.cloud.title">Accompagnement Cloud</h3>
+                            <p class="text-freelabz-text mb-4 text-md" data-i18n="prestations.cloud.desc">
+                                Préparation, choix du cloud, architecture, mise en place et infrastructure-as-code (Terraform, Ansible). Un accompagnement de A à Z avec un focus sur la sécurité à chaque étape.
+                            </p>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#contact" class="flex-1 text-center bg-gray-700 text-white font-semibold py-2 px-4 rounded hover:bg-freelabz-yellow hover:text-freelabz-text-dark transition duration-300" data-i18n="prestations.quote">Demander un devis</a>
+                        </div>
+                    </div>
+
+                    <!-- Carte Formations -->
+                    <div class="bg-freelabz-bg p-6 rounded-lg border border-gray-700 transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 hover:border-freelabz-yellow">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-freelabz-yellow mb-3">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+                            </svg>
+                            <h3 class="text-xl font-semibold text-white mb-3" data-i18n="formations.title">Formations</h3>
+                            <p class="text-freelabz-text mb-4 text-md" data-i18n="formations.desc">
+                                Formations pratiques en cybersécurité, DevOps, programmation (Python, Go) et administration Linux & réseau. Adaptées à tous les niveaux, du débutant à l'expert.
+                            </p>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#contact" class="flex-1 text-center bg-gray-700 text-white font-semibold py-2 px-4 rounded hover:bg-freelabz-yellow hover:text-freelabz-text-dark transition duration-300" data-i18n="prestations.quote">Demander un devis</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -358,8 +500,8 @@
         <!-- Produits Section -->
         <section id="produits" class="py-20 bg-freelabz-bg">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12" data-i18n-html="produits.h2">
-                    Nos <span class="text-freelabz-yellow">outils</span> de sécurité offensive
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-4" data-i18n-html="produits.h2">
+                    Nos <span class="text-freelabz-yellow">outils</span> et <span class="text-freelabz-yellow">produits</span>
                 </h2>
                  <p class="text-lg text-center text-freelabz-text mb-12 max-w-3xl mx-auto" data-i18n="produits.intro">
                     Au-delà des services, Freelabz innove en créant des outils pour la communauté et les entreprises, rendant la sécurité offensive plus efficace et accessible.
@@ -471,14 +613,17 @@
                 </h2>
                 <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16">
                     <a href="https://arxone.com/" target="_blank" rel="noopener noreferrer" aria-label="ARX ONE">
-                        <img src="./assets/client_arxone.svg" alt="ARX ONE" class="h-12 w-auto filter grayscale hover:filter-none transition duration-300 opacity-70 hover:opacity-100">
+                        <img src="./assets/client_arxone.svg" alt="ARX ONE" class="client-logo h-12 w-auto opacity-90" style="filter: invert(1);">
                     </a>
                     <a href="https://www.ochinfo.fr/" target="_blank" rel="noopener noreferrer" aria-label="OCH">
-                        <img src="./assets/client_och.jpg" alt="OCH" class="h-12 w-auto filter grayscale hover:filter-none transition duration-300 opacity-70 hover:opacity-100">
+                        <img src="./assets/client_och.jpg" alt="OCH" class="client-logo h-12 w-auto opacity-90">
                     </a>
-                    <!-- <a href="https://www.t2s.fr/" target="_blank" rel="noopener noreferrer" aria-label="T2S">
-                        <img src="./assets/client_t2s.png" alt="T2S" class="h-12 w-auto filter grayscale hover:filter-none transition duration-300 opacity-70 hover:opacity-100">
-                    </a> -->
+                    <a href="https://www.t2s.fr/" target="_blank" rel="noopener noreferrer" aria-label="T2S">
+                        <img src="./assets/client_t2s.png" alt="T2S" class="client-logo h-12 w-auto opacity-90">
+                    </a>
+                    <a href="https://www.nexa.fr/" target="_blank" rel="noopener noreferrer" aria-label="Nexa">
+                        <img src="./assets/client_nexa.svg" alt="Nexa" class="client-logo h-12 w-auto opacity-90">
+                    </a>
                 </div>
             </div>
         </section>
@@ -584,6 +729,27 @@
     </footer>
 
     <script>
+        // Lang dropdown
+        function toggleLangMenu(v) {
+            var btn = document.getElementById('lang-btn-' + v);
+            var menu = document.getElementById('lang-menu-' + v);
+            var isOpen = menu.classList.contains('open');
+            document.querySelectorAll('.lang-menu').forEach(function(m) { m.classList.remove('open'); });
+            document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('open'); });
+            if (!isOpen) { menu.classList.add('open'); btn.classList.add('open'); }
+        }
+        function selectLang(lang) {
+            applyLanguage(lang);
+            document.querySelectorAll('.lang-menu').forEach(function(m) { m.classList.remove('open'); });
+            document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('open'); });
+        }
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.lang-dropdown')) {
+                document.querySelectorAll('.lang-menu').forEach(function(m) { m.classList.remove('open'); });
+                document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('open'); });
+            }
+        });
+
         // GIF lightbox
         const gifLightbox = document.getElementById('gif-lightbox');
         const gifLightboxImg = document.getElementById('gif-lightbox-img');
@@ -600,6 +766,18 @@
         document.getElementById('gif-lightbox-close').addEventListener('click', closeLightbox);
         gifLightbox.addEventListener('click', function(e) { if (e.target === gifLightbox) closeLightbox(); });
         document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+
+        // Scroll indicator — hide on first scroll
+        (function() {
+            var arrow = document.getElementById('scroll-indicator');
+            var dismissed = false;
+            window.addEventListener('scroll', function() {
+                if (!dismissed && window.scrollY > 10) {
+                    dismissed = true;
+                    arrow.classList.add('hidden-arrow');
+                }
+            }, { passive: true });
+        })();
 
         // Logo shrink on scroll
         const siteLogo = document.getElementById('site-logo');
@@ -719,17 +897,17 @@
         // i18n
         const translations = {
             fr: {
-                'nav.prestations': 'Prestations',
+                'nav.prestations': 'Services',
                 'nav.produits': 'Produits',
                 'nav.equipe': 'Équipe',
                 'nav.clients': 'Clients',
-                'nav.contact': 'Nous Contacter',
+                'nav.contact': 'Nous contacter',
                 'hero.h1': 'Cybersécurité <span class="text-freelabz-yellow" style="font-weight:700;">offensive</span>',
                 'hero.h1sub': '<span style="position:relative; display:inline-block;">pour tous<svg style="position:absolute; left:0; bottom:-6px; width:100%; height:10px; opacity:0.5;" viewBox="0 0 100 10" preserveAspectRatio="none" fill="none"><path d="M2,8 C25,2 75,2 98,8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span>, car la meilleure défense, c\'est l\'attaque !',
                 'hero.subtitle': 'Freelabz sécurise vos actifs numériques via des <strong>audits</strong> experts et des <strong>tests d\'intrusion</strong> pointus. Nous développons aussi des <strong>outils</strong> et <strong>produits</strong> pour tous pour contribuer au développement de la cybersécurité offensive.',
                 'hero.cta_services': 'Découvrir nos services',
-                'hero.cta_tools': 'Explorer nos outils',
-                'prestations.h2': 'Nos <span class="text-freelabz-yellow">prestations</span> de cybersécurité',
+                'hero.cta_tools': 'Explorer nos produits',
+                'prestations.h2': 'Nos <span class="text-freelabz-yellow">services</span>',
                 'prestations.card1.title': 'Audit surface d\'attaque externe',
                 'prestations.card1.desc': 'Identification exhaustive de vos actifs exposés (sous-domaines, services, sites web), OSINT et analyse de vulnérabilités initiales pour une vue complète de votre exposition.',
                 'prestations.card2.title': 'Audit de code (SAST/DAST)',
@@ -743,7 +921,7 @@
                 'prestations.card6.title': 'Abonnement annuel proactif',
                 'prestations.card6.desc': 'Pentest initial (quelques jours), suivi de scans mensuels personnalisés et configurables, monitoring et pilotage de la remédiation. En option: accès à Secator Cloud.',
                 'prestations.quote': 'Demander un devis',
-                'produits.h2': 'Nos <span class="text-freelabz-yellow">outils</span> de sécurité offensive',
+                'produits.h2': 'Nos <span class="text-freelabz-yellow">outils</span> et <span class="text-freelabz-yellow">produits</span>',
                 'produits.intro': 'Au-delà des services, Freelabz innove en créant des outils pour la communauté et les entreprises, rendant la sécurité offensive plus efficace et accessible.',
                 'produits.secator.title': 'Secator (CLI open-source)',
                 'produits.secator.desc': 'Outil de pentest automatisé conçu pour les pentesters. Simplifie le lancement d\'outils et l\'automatisation de workflows répétitifs (reconnaissance, scan) via des fichiers YAML configurables.',
@@ -756,6 +934,23 @@
                 'equipe.olivier.bio': 'Mon parcours professionnel et académique est marqué par un engagement solide dans le domaine des technologies et de l\'informatique, avec un Master of Science en Computer Engineering de l\'Illinois Institute of Technology et 4 ans passés chez Google en tant qu\'ingénieur Cloud. J\'ai développé des compétences techniques pointues en cybersécurité, DevOps et infrastructure Cloud, et je souhaite contribuer à la sécurisation des infrastructures critiques et à la promotion d\'une utilisation responsable des technologies.',
                 'equipe.wally.role': 'Pentesteur & administrateur système',
                 'equipe.wally.bio': 'Mon parcours a débuté dans la cuisine et l\'animation avant de s\'orienter vers l\'informatique et la sécurité numérique grâce à une formation autodidacte et des diplômes complémentaires (DAEU, DUT Réseaux et Télécommunications, certification professionnelle). J\'ai ensuite exercé en tant qu\'administrateur systèmes et réseaux pour protéger les données sensibles et garantir l\'intégrité des systèmes informatiques.',
+                'nav.formations': 'Formations',
+                'formations.h2': 'Nos <span class="text-freelabz-yellow">formations</span>',
+                'formations.intro': 'Nous dispensons des formations pratiques et adaptées à tous les niveaux, du débutant à l\'expert, dans les domaines clés de l\'informatique moderne.',
+                'formations.cyber.title': 'Cybersécurité',
+                'formations.cyber.desc': 'Pentest, audit de sécurité, sécurité offensive et défensive, sensibilisation aux menaces, gestion des vulnérabilités. Pour les développeurs, sysadmins et équipes sécurité.',
+                'formations.devops.title': 'DevOps',
+                'formations.devops.desc': 'CI/CD, conteneurs (Docker, Kubernetes), infrastructure as code (Terraform, Ansible), cloud (AWS, GCP), monitoring et observabilité. Pour les équipes de développement et d\'exploitation.',
+                'formations.prog.title': 'Programmation',
+                'formations.prog.desc': 'Python, Go, scripting shell, développement d\'outils de sécurité, automatisation. Formations orientées pratique avec des projets concrets adaptés à votre contexte métier.',
+                'formations.linux.title': 'Administration Linux & réseau',
+                'formations.linux.desc': 'Administration système Linux, gestion des réseaux, firewalls, VPN, monitoring d\'infrastructure. Pour les administrateurs systèmes et réseaux souhaitant approfondir leurs compétences.',
+                'formations.title': 'Formations',
+                'formations.desc': 'Formations pratiques en cybersécurité, DevOps, programmation (Python, Go) et administration Linux & réseau. Adaptées à tous les niveaux, du débutant à l\'expert.',
+                'prestations.devops.title': 'Accompagnement DevOps',
+                'prestations.devops.desc': 'Mise en place et optimisation de pipelines CI/CD, intégration de la sécurité aux processus de déploiement (DevSecOps), automatisation et bonnes pratiques pour des livraisons rapides et sécurisées.',
+                'prestations.cloud.title': 'Accompagnement Cloud',
+                'prestations.cloud.desc': 'Préparation, choix du cloud, architecture, mise en place et infrastructure-as-code (Terraform, Ansible). Un accompagnement de A à Z avec un focus sur la sécurité à chaque étape.',
                 'confiance.h2': 'Ils nous font <span class="text-freelabz-yellow">confiance</span>',
                 'contact.h2': 'Prêt à renforcer votre <span class="text-freelabz-yellow">sécurité</span> ?',
                 'contact.desc': 'Contactez nos experts pour discuter de vos besoins en audit, pentest ou pour en savoir plus sur nos outils Secator et Secator Cloud.',
@@ -779,12 +974,12 @@
                 'nav.equipe': 'Team',
                 'nav.clients': 'Clients',
                 'nav.contact': 'Contact Us',
-                'hero.h1': 'Offensive <span class="text-freelabz-yellow" style="font-weight:700;">cybersecurity</span>',
+                'hero.h1': 'Offensive <span class="text-freelabz-yellow" style="font-weight:700;">Cybersecurity</span>',
                 'hero.h1sub': '<span style="position:relative; display:inline-block;">for everyone<svg style="position:absolute; left:0; bottom:-6px; width:100%; height:10px; opacity:0.5;" viewBox="0 0 100 10" preserveAspectRatio="none" fill="none"><path d="M2,8 C25,2 75,2 98,8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span>, because the best defense is a good offense!',
                 'hero.subtitle': 'Freelabz secures your digital assets through expert <strong>audits</strong> and precise <strong>penetration testing</strong>. We also develop <strong>tools</strong> and <strong>products</strong> for everyone to contribute to the growth of offensive cybersecurity.',
                 'hero.cta_services': 'Discover our services',
-                'hero.cta_tools': 'Explore our tools',
-                'prestations.h2': 'Our cybersecurity <span class="text-freelabz-yellow">services</span>',
+                'hero.cta_tools': 'Explore our products',
+                'prestations.h2': 'Our <span class="text-freelabz-yellow">services</span>',
                 'prestations.card1.title': 'External attack surface audit',
                 'prestations.card1.desc': 'Comprehensive identification of your exposed assets (subdomains, services, websites), OSINT and initial vulnerability analysis for a complete view of your exposure.',
                 'prestations.card2.title': 'Code audit (SAST/DAST)',
@@ -798,7 +993,7 @@
                 'prestations.card6.title': 'Proactive annual subscription',
                 'prestations.card6.desc': 'Initial pentest (a few days), followed by customizable monthly scans, monitoring and remediation management. Optional: access to Secator Cloud.',
                 'prestations.quote': 'Request a quote',
-                'produits.h2': 'Our offensive <span class="text-freelabz-yellow">security tools</span>',
+                'produits.h2': 'Our <span class="text-freelabz-yellow">tools</span> and <span class="text-freelabz-yellow">products</span>',
                 'produits.intro': 'Beyond services, Freelabz innovates by creating tools for the community and businesses, making offensive security more efficient and accessible.',
                 'produits.secator.title': 'Secator (open-source CLI)',
                 'produits.secator.desc': 'Automated pentest tool designed for pentesters. Simplifies tool launching and automation of repetitive workflows (reconnaissance, scanning) via configurable YAML files.',
@@ -811,6 +1006,23 @@
                 'equipe.olivier.bio': 'My professional and academic background is marked by a strong commitment to technology and computing, with a Master of Science in Computer Engineering from the Illinois Institute of Technology and 4 years at Google as a Cloud engineer. I have developed advanced technical skills in cybersecurity, DevOps and Cloud infrastructure, and I aim to contribute to securing critical infrastructure and promoting responsible use of technology.',
                 'equipe.wally.role': 'Pentester & system administrator',
                 'equipe.wally.bio': 'My career started in catering and entertainment before moving into IT and digital security through self-taught learning and additional qualifications (DAEU, Networks and Telecommunications DUT, professional certification). I then worked as a systems and network administrator to protect sensitive data and ensure the integrity of computer systems.',
+                'nav.formations': 'Training',
+                'formations.h2': 'Our <span class="text-freelabz-yellow">training</span> programs',
+                'formations.intro': 'We offer practical training adapted to all levels, from beginner to expert, in key areas of modern computing.',
+                'formations.cyber.title': 'Cybersecurity',
+                'formations.cyber.desc': 'Pentest, security audit, offensive and defensive security, threat awareness, vulnerability management. For developers, sysadmins and security teams.',
+                'formations.devops.title': 'DevOps',
+                'formations.devops.desc': 'CI/CD, containers (Docker, Kubernetes), infrastructure as code (Terraform, Ansible), cloud (AWS, GCP), monitoring and observability. For development and operations teams.',
+                'formations.prog.title': 'Programming',
+                'formations.prog.desc': 'Python, Go, shell scripting, security tool development, automation. Practice-oriented training with concrete projects tailored to your business context.',
+                'formations.linux.title': 'Linux & network administration',
+                'formations.linux.desc': 'Linux system administration, network management, firewalls, VPN, infrastructure monitoring. For system and network administrators looking to deepen their skills.',
+                'formations.title': 'Training',
+                'formations.desc': 'Practical training in cybersecurity, DevOps, programming (Python, Go) and Linux & network administration. Adapted to all levels, from beginner to expert.',
+                'prestations.devops.title': 'DevOps consulting',
+                'prestations.devops.desc': 'Setup and optimization of CI/CD pipelines, integration of security into deployment processes (DevSecOps), automation and best practices for fast and secure releases.',
+                'prestations.cloud.title': 'Cloud consulting',
+                'prestations.cloud.desc': 'Preparation, cloud selection, architecture, setup and infrastructure-as-code (Terraform, Ansible). End-to-end guidance with a security focus at every step.',
                 'confiance.h2': 'They <span class="text-freelabz-yellow">trust</span> us',
                 'contact.h2': 'Ready to strengthen your <span class="text-freelabz-yellow">security</span>?',
                 'contact.desc': 'Contact our experts to discuss your audit, pentest needs or to learn more about our Secator and Secator Cloud tools.',
@@ -841,10 +1053,13 @@
             document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
                 if (t[el.dataset.i18nPlaceholder] !== undefined) el.placeholder = t[el.dataset.i18nPlaceholder];
             });
-            document.getElementById('lang-fr').style.fontWeight = lang === 'fr' ? '700' : '400';
-            document.getElementById('lang-fr').style.opacity = lang === 'fr' ? '1' : '0.5';
-            document.getElementById('lang-en').style.fontWeight = lang === 'en' ? '700' : '400';
-            document.getElementById('lang-en').style.opacity = lang === 'en' ? '1' : '0.5';
+            ['desktop', 'mobile'].forEach(function(v) {
+                const label = document.getElementById('lang-label-' + v);
+                if (label) label.textContent = lang.toUpperCase();
+                document.querySelectorAll('#lang-menu-' + v + ' .lang-option').forEach(function(opt) {
+                    opt.classList.toggle('active', opt.dataset.lang === lang);
+                });
+            });
             document.documentElement.lang = lang;
             localStorage.setItem('freelabz-lang', lang);
         }
