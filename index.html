@@ -39,33 +39,57 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Freelabz",
-      "legalName": "Freelabz SAS",
-      "url": "https://freelabz.com/",
-      "logo": "https://freelabz.com/assets/logo_freelabz.png",
-      "description": "Freelabz : audit de sécurité, tests d'intrusion (pentest), accompagnement Cloud & DevOps et création d'outils de cybersécurité offensive comme Secator.",
-      "email": "sales@freelabz.com",
-      "foundingDate": "2025-08-29",
-      "vatID": "FR59990919359",
-      "taxID": "990919359",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "29 Avenue Denfert-Rochereau",
-        "postalCode": "42000",
-        "addressLocality": "Saint-Étienne",
-        "addressCountry": "FR"
-      },
-      "founder": [
-        { "@type": "Person", "name": "Olivier Cervello", "jobTitle": "Président" },
-        { "@type": "Person", "name": "Wally Chaibi", "jobTitle": "Directeur Général" }
-      ],
-      "knowsAbout": ["Cybersécurité offensive", "Pentest", "Audit de sécurité", "Cloud", "DevOps", "DevSecOps"],
-      "sameAs": [
-        "https://github.com/freelabz",
-        "https://www.linkedin.com/company/freelabz",
-        "https://www.youtube.com/@FreeLabz",
-        "https://x.com/freelabz"
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://freelabz.com/#organization",
+          "name": "Freelabz",
+          "legalName": "Freelabz SAS",
+          "url": "https://freelabz.com/",
+          "logo": "https://freelabz.com/assets/logo_freelabz.png",
+          "description": "Freelabz : audit de sécurité, tests d'intrusion (pentest), accompagnement Cloud & DevOps et création d'outils de cybersécurité offensive comme Secator.",
+          "email": "sales@freelabz.com",
+          "foundingDate": "2025-08-29",
+          "vatID": "FR59990919359",
+          "taxID": "990919359",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "29 Avenue Denfert-Rochereau",
+            "postalCode": "42000",
+            "addressLocality": "Saint-Étienne",
+            "addressCountry": "FR"
+          },
+          "founder": [
+            { "@type": "Person", "name": "Olivier Cervello", "jobTitle": "Président" },
+            { "@type": "Person", "name": "Wally Chaibi", "jobTitle": "Directeur Général" }
+          ],
+          "knowsAbout": ["Cybersécurité offensive", "Pentest", "Audit de sécurité", "Cloud", "DevOps", "DevSecOps"],
+          "sameAs": [
+            "https://github.com/freelabz",
+            "https://www.linkedin.com/company/freelabz",
+            "https://www.youtube.com/@FreeLabz",
+            "https://x.com/freelabz"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://freelabz.com/#website",
+          "url": "https://freelabz.com/",
+          "name": "Freelabz",
+          "inLanguage": "fr-FR",
+          "publisher": { "@id": "https://freelabz.com/#organization" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Secator",
+          "applicationCategory": "SecurityApplication",
+          "operatingSystem": "Linux, macOS, Windows",
+          "url": "https://github.com/freelabz/secator",
+          "description": "Secator : outil CLI open-source d'orchestration de tâches pour les tests d'intrusion et la reconnaissance offensive.",
+          "license": "https://github.com/freelabz/secator/blob/main/LICENSE.md",
+          "author": { "@id": "https://freelabz.com/#organization" },
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+        }
       ]
     }
     </script>
