@@ -672,7 +672,9 @@
 
                     <!-- Membre 1 -->
                     <div class="bg-freelabz-bg p-6 rounded-lg transition-all duration-200 border border-gray-700 hover:-translate-y-1 hover:border-freelabz-yellow hover:shadow-lg">
-                        <img loading="lazy" decoding="async" src="./assets/employee_ocervello.jpeg" alt="Photo de Olivier Cervello" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-freelabz-yellow">
+                        <div class="mx-auto mb-4 border-2 border-freelabz-yellow" style="width:8rem; height:8rem; border-radius:9999px; overflow:hidden;">
+                            <img loading="lazy" decoding="async" src="./assets/employee_ocervello.jpeg" alt="Photo de Olivier Cervello" class="w-full h-full object-cover" style="transform:scale(1.4);">
+                        </div>
                         <h3 class="text-xl font-semibold text-white mb-1">Olivier Cervello</h3>
                         <p class="text-freelabz-yellow text-sm mb-3" data-i18n="equipe.olivier.role">Pentesteur & développeur</p>
                         <p class="text-freelabz-text text-md mb-3 text-justify" data-i18n="equipe.olivier.bio">Mon parcours professionnel et académique est marqué par un engagement solide dans le domaine des technologies et de l'informatique, avec un Master of
@@ -693,7 +695,7 @@
 
                     <!-- Membre 2 -->
                     <div class="bg-freelabz-bg p-6 rounded-lg transition-all duration-200 border border-gray-700 hover:-translate-y-1 hover:border-freelabz-yellow hover:shadow-lg">
-                        <img loading="lazy" decoding="async" src="./assets/employee_wchaibi.jpg" alt="Photo de Wally Chaibi" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover object-top border-2 border-freelabz-yellow">
+                        <img loading="lazy" decoding="async" src="./assets/employee_wchaibi.jpg" alt="Photo de Wally Chaibi" class="rounded-full mx-auto mb-4 object-cover object-top border-2 border-freelabz-yellow" style="width:8rem; height:8rem; border-radius:9999px;">
                         <h3 class="text-xl font-semibold text-white mb-1">Wally Chaibi</h3>
                         <p class="text-freelabz-yellow text-sm mb-3" data-i18n="equipe.wally.role">Pentesteur & administrateur système</p>
                         <p class="text-freelabz-text text-md mb-3 text-justify" data-i18n="equipe.wally.bio">Mon parcours a débuté dans la cuisine et l'animation avant de s'orienter vers l'informatique et la sécurité numérique grâce à une formation autodidacte
@@ -741,6 +743,102 @@
                 </div>
             </div>
         </section>
+
+        <!-- "Ils parlent de nous" Section -->
+        <section id="presse" class="py-20 bg-freelabz-card">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">
+                    Ils parlent de <span class="text-freelabz-yellow">nous</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Interview Ophélie Meunier -->
+                    <div class="bg-freelabz-bg rounded-lg border border-gray-700 transition-all duration-200 flex flex-col overflow-hidden hover:border-freelabz-yellow">
+                        <iframe src="https://www.youtube.com/embed/AE7oMicPLJo" title="Notre interview pour Who's Who Leaders avec Ophélie Meunier" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full" style="aspect-ratio:16/9;"></iframe>
+                        <div class="p-6">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-freelabz-yellow">Interview vidéo</span>
+                            <h3 class="text-xl font-semibold text-white mt-2">Notre interview pour Who's Who Leaders avec Ophélie Meunier</h3>
+                        </div>
+                    </div>
+                    <!-- Article Le Figaro -->
+                    <a href="https://www.lefigaro.fr/economie/freelabz-la-cybersecurite-offensive-a-la-portee-des-tpe-et-pme-20251216" target="_blank" rel="noopener noreferrer" title="Article du Figaro sur Freelabz" class="group bg-freelabz-bg rounded-lg border border-gray-700 transition-all duration-200 flex flex-col overflow-hidden hover:-translate-y-1 hover:border-freelabz-yellow">
+                        <img loading="lazy" decoding="async" src="./assets/presse_figaro.png" alt="Article du Figaro : Freelabz, la cybersécurité offensive à la portée des TPE et PME" class="w-full object-cover object-top" style="aspect-ratio:16/9;">
+                        <div class="p-6">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-freelabz-yellow">Presse — Le Figaro</span>
+                            <h3 class="text-xl font-semibold text-white mt-2">« Freelabz : la cybersécurité offensive à la portée des TPE et PME »</h3>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Contenu additionnel (masqué par défaut) -->
+                <div id="presse-plus" style="display:none;" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-8">
+                    <!-- Présentation HackTheBox 0x33 -->
+                    <a href="https://www.youtube.com/watch?v=u-XQ7hUuraA" target="_blank" rel="noopener noreferrer" title="Notre première présentation à HackTheBox 0x33" class="group bg-freelabz-bg rounded-lg border border-gray-700 transition-all duration-200 flex flex-col overflow-hidden hover:-translate-y-1 hover:border-freelabz-yellow">
+                        <div class="relative">
+                            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/u-XQ7hUuraA/hqdefault.jpg" alt="Présentation de Freelabz à HackTheBox 0x33" class="w-full object-cover" style="aspect-ratio:16/9;">
+                            <span class="absolute inset-0 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:64px;height:64px;" class="text-white/90 group-hover:text-freelabz-yellow transition duration-300 drop-shadow-lg">
+                                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM9.75 8.25l6 3.75-6 3.75v-7.5z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-freelabz-yellow">Conférence — HackTheBox 0x33</span>
+                            <h3 class="text-xl font-semibold text-white mt-2">Notre première présentation à HackTheBox</h3>
+                        </div>
+                    </a>
+                    <!-- Podcast Hack'n'Speak -->
+                    <div class="bg-freelabz-bg rounded-lg border border-gray-700 transition-all duration-200 flex flex-col overflow-hidden hover:border-freelabz-yellow">
+                        <div class="p-6">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-freelabz-yellow">Podcast — Hack'n'Speak</span>
+                            <h3 class="text-xl font-semibold text-white mt-2 mb-4">0x27 — Retour sur la création de Secator</h3>
+                            <iframe src="https://creators.spotify.com/pod/profile/hacknspeak/embed/episodes/0x27-Nabot--JahMyst--Retour-sur-la-cration-de-Secator--des-tudes-longues-ou-pas-e2lgrdn/a-abdbqm5" height="102" width="100%" frameborder="0" scrolling="no" title="Podcast Hack'n'Speak 0x27"></iframe>
+                        </div>
+                    </div>
+                    <!-- Stream Laluka — Partie 1 -->
+                    <div class="bg-freelabz-bg rounded-lg border border-gray-700 transition-all duration-200 flex flex-col overflow-hidden hover:border-freelabz-yellow">
+                        <iframe src="https://www.youtube.com/embed/42L7t2zMq2g" title="Notre passage sur le stream de Laluka (partie 1)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full" style="aspect-ratio:16/9;"></iframe>
+                        <div class="p-6">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-freelabz-yellow">Stream — Laluka</span>
+                            <h3 class="text-xl font-semibold text-white mt-2">Notre passage sur le stream de Laluka (partie 1)</h3>
+                        </div>
+                    </div>
+                    <!-- Stream Laluka — Partie 2 -->
+                    <div class="bg-freelabz-bg rounded-lg border border-gray-700 transition-all duration-200 flex flex-col overflow-hidden hover:border-freelabz-yellow">
+                        <iframe src="https://www.youtube.com/embed/IUV4ZQHBp90" title="Notre passage sur le stream de Laluka (partie 2)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full" style="aspect-ratio:16/9;"></iframe>
+                        <div class="p-6">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-freelabz-yellow">Stream — Laluka</span>
+                            <h3 class="text-xl font-semibold text-white mt-2">Notre passage sur le stream de Laluka (partie 2)</h3>
+                        </div>
+                    </div>
+                    <!-- Présentation HackTheBox 0x62 (lien à venir)
+                    <div class="bg-freelabz-bg rounded-lg border border-gray-700 transition-all duration-200 flex flex-col overflow-hidden hover:border-freelabz-yellow">
+                        <iframe src="https://www.youtube.com/embed/REMPLACER_ID" title="Notre seconde présentation à HackTheBox 0x62" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full" style="aspect-ratio:16/9;"></iframe>
+                        <div class="p-6">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-freelabz-yellow">Conférence — HackTheBox 0x62</span>
+                            <h3 class="text-xl font-semibold text-white mt-2">Notre seconde présentation à HackTheBox</h3>
+                        </div>
+                    </div>
+                    -->
+                </div>
+
+                <div style="text-align:center; margin-top:3rem;">
+                    <button id="presse-voir-plus" type="button" class="border border-freelabz-yellow text-freelabz-yellow font-semibold py-2 px-6 rounded hover:bg-freelabz-yellow hover:text-freelabz-text-dark transition duration-300">Voir plus</button>
+                </div>
+            </div>
+        </section>
+        <script>
+            (function(){
+                var btn = document.getElementById('presse-voir-plus');
+                var box = document.getElementById('presse-plus');
+                if (btn && box) {
+                    btn.addEventListener('click', function(){
+                        var hidden = box.style.display === 'none';
+                        box.style.display = hidden ? 'grid' : 'none';
+                        btn.textContent = hidden ? 'Voir moins' : 'Voir plus';
+                    });
+                }
+            })();
+        </script>
 
         <!-- Contact Section -->
         <section id="contact" class="py-20 bg-freelabz-card">
