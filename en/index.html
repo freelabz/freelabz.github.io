@@ -2,7 +2,7 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freelabz - Offensive cybersecurity for everyone</title>
+    <title>Freelabz - Audit, pentest &amp; offensive cybersecurity</title>
     <meta name="description" content="Freelabz: security audits, pentesting, Cloud &amp; DevOps support and offensive cybersecurity tools like Secator. Protect your business.">
 
     <!-- Favicon -->
@@ -20,7 +20,7 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Freelabz">
-    <meta property="og:title" content="Freelabz - Offensive cybersecurity for everyone">
+    <meta property="og:title" content="Freelabz - Audit, pentest &amp; offensive cybersecurity">
     <meta property="og:description" content="Freelabz: security audits, pentesting, Cloud &amp; DevOps support and offensive cybersecurity tools like Secator. Protect your business.">
     <meta property="og:url" content="https://freelabz.com/en/">
     <meta property="og:image" content="https://freelabz.com/assets/logo_freelabz.png">
@@ -30,9 +30,44 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@freelabz">
-    <meta name="twitter:title" content="Freelabz - Offensive cybersecurity for everyone">
+    <meta name="twitter:title" content="Freelabz - Audit, pentest &amp; offensive cybersecurity">
     <meta name="twitter:description" content="Freelabz: security audits, pentesting, Cloud &amp; DevOps support and offensive cybersecurity tools like Secator. Protect your business.">
     <meta name="twitter:image" content="https://freelabz.com/assets/logo_freelabz.png">
+
+    <!-- Structured data: Organization (identity / GEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Freelabz",
+      "legalName": "Freelabz SAS",
+      "url": "https://freelabz.com/",
+      "logo": "https://freelabz.com/assets/logo_freelabz.png",
+      "description": "Freelabz : audit de sécurité, tests d'intrusion (pentest), accompagnement Cloud & DevOps et création d'outils de cybersécurité offensive comme Secator.",
+      "email": "sales@freelabz.com",
+      "foundingDate": "2025-08-29",
+      "vatID": "FR59990919359",
+      "taxID": "990919359",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "29 Avenue Denfert-Rochereau",
+        "postalCode": "42000",
+        "addressLocality": "Saint-Étienne",
+        "addressCountry": "FR"
+      },
+      "founder": [
+        { "@type": "Person", "name": "Olivier Cervello", "jobTitle": "Président" },
+        { "@type": "Person", "name": "Wally Chaibi", "jobTitle": "Directeur Général" }
+      ],
+      "knowsAbout": ["Cybersécurité offensive", "Pentest", "Audit de sécurité", "Cloud", "DevOps", "DevSecOps"],
+      "sameAs": [
+        "https://github.com/freelabz",
+        "https://www.linkedin.com/company/freelabz",
+        "https://www.youtube.com/@FreeLabz",
+        "https://x.com/freelabz"
+      ]
+    }
+    </script>
 
     <!-- Space Grotesk font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -240,7 +275,10 @@
             <!-- Logo -->
             <div class="flex items-center">
                 <a href="#" aria-label="Page d'accueil Freelabz">
-                    <img id="site-logo" src="../assets/logo_freelabz.png" alt="Logo Freelabz" class="w-auto">
+                    <picture>
+                        <source srcset="../assets/logo_freelabz_256.webp" type="image/webp">
+                        <img id="site-logo" src="../assets/logo_freelabz_256.png" alt="Logo Freelabz" class="w-auto" width="256" height="256" fetchpriority="high">
+                    </picture>
                 </a>
             </div>
 
@@ -535,7 +573,7 @@
                                 <span data-i18n="produits.secator.title">Secator (open-source CLI)</span>
                             </h3>
                             <p class="text-freelabz-text mb-4 text-md" data-i18n="produits.secator.desc">Automated pentest tool designed for pentesters. Simplifies tool launching and automation of repetitive workflows (reconnaissance, scanning) via configurable YAML files.</p>
-                            <img id="secator-gif" src="https://raw.githubusercontent.com/freelabz/secator/main/images/demo.gif" alt="Secator demo" class="w-full rounded-md cursor-pointer">
+                            <video id="secator-gif" src="../assets/secator_demo.mp4" poster="../assets/secator_demo_poster.jpg" muted="" loop="" playsinline="" preload="none" aria-label="Secator demo" class="w-full rounded-md cursor-pointer"></video>
                         </div>
                          <a href="https://github.com/freelabz/secator" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block text-center bg-gray-700 text-white font-semibold py-2 px-4 rounded hover:bg-freelabz-yellow hover:text-freelabz-text-dark transition duration-300">
                              <span data-i18n="produits.secator.link">View on GitHub</span>
@@ -557,7 +595,7 @@
                                 <span data-i18n="produits.cloud.title">Secator Cloud (SaaS platform)</span>
                             </h3>
                             <p class="text-freelabz-text mb-4 text-md" data-i18n="produits.cloud.desc">Configurable offensive security platform. Allows companies to launch custom scans and pentesters to manage missions, analyze data (via AI) and generate reports. Self-hosted option available.</p>
-                            <img id="secator-cloud-screenshot" src="../assets/secator_cloud_screenshot.png" alt="Secator Cloud screenshot" class="w-full rounded-md cursor-pointer">
+                            <img loading="lazy" decoding="async" id="secator-cloud-screenshot" src="../assets/secator_cloud_screenshot.png" alt="Secator Cloud screenshot" class="w-full rounded-md cursor-pointer">
                         </div>
                          <a href="#contact" class="mt-4 inline-block text-center bg-gray-700 text-white font-semibold py-2 px-4 rounded hover:bg-freelabz-yellow hover:text-freelabz-text-dark transition duration-300" data-i18n="produits.cloud.link">Discover the platform</a>
                     </div>
@@ -573,7 +611,7 @@
 
                     <!-- Membre 1 -->
                     <div class="bg-freelabz-bg p-6 rounded-lg transition-all duration-200 border border-gray-700 hover:-translate-y-1 hover:border-freelabz-yellow hover:shadow-lg">
-                        <img src="../assets/employee_ocervello.jpeg" alt="Photo de Olivier Cervello" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-freelabz-yellow">
+                        <img loading="lazy" decoding="async" src="../assets/employee_ocervello.jpeg" alt="Photo de Olivier Cervello" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-freelabz-yellow">
                         <h3 class="text-xl font-semibold text-white mb-1">Olivier Cervello</h3>
                         <p class="text-freelabz-yellow text-sm mb-3" data-i18n="equipe.olivier.role">Pentester &amp; developer</p>
                         <p class="text-freelabz-text text-md mb-3 text-justify" data-i18n="equipe.olivier.bio">My professional and academic background is marked by a strong commitment to technology and computing, with a Master of Science in Computer Engineering from the Illinois Institute of Technology and 4 years at Google as a Cloud engineer. I have developed advanced technical skills in cybersecurity, DevOps and Cloud infrastructure, and I aim to contribute to securing critical infrastructure and promoting responsible use of technology.</p>
@@ -591,7 +629,7 @@
 
                     <!-- Membre 2 -->
                     <div class="bg-freelabz-bg p-6 rounded-lg transition-all duration-200 border border-gray-700 hover:-translate-y-1 hover:border-freelabz-yellow hover:shadow-lg">
-                        <img src="../assets/employee_wchaibi.jpg" alt="Photo de Wally Chaibi" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover object-top border-2 border-freelabz-yellow">
+                        <img loading="lazy" decoding="async" src="../assets/employee_wchaibi.jpg" alt="Photo de Wally Chaibi" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover object-top border-2 border-freelabz-yellow">
                         <h3 class="text-xl font-semibold text-white mb-1">Wally Chaibi</h3>
                         <p class="text-freelabz-yellow text-sm mb-3" data-i18n="equipe.wally.role">Pentester &amp; system administrator</p>
                         <p class="text-freelabz-text text-md mb-3 text-justify" data-i18n="equipe.wally.bio">My career started in catering and entertainment before moving into IT and digital security through self-taught learning and additional qualifications (DAEU, Networks and Telecommunications DUT, professional certification). I then worked as a systems and network administrator to protect sensitive data and ensure the integrity of computer systems.</p>
@@ -617,16 +655,16 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12" data-i18n-html="confiance.h2">They <span class="text-freelabz-yellow">trust</span> us</h2>
                 <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16">
                     <a href="https://arxone.com/" target="_blank" rel="noopener noreferrer" aria-label="ARX ONE">
-                        <img src="../assets/client_arxone.svg" alt="ARX ONE" class="client-logo h-12 w-auto opacity-90">
+                        <img loading="lazy" decoding="async" src="../assets/client_arxone.svg" alt="ARX ONE" class="client-logo h-12 w-auto opacity-90">
                     </a>
                     <a href="https://www.ochinfo.fr/" target="_blank" rel="noopener noreferrer" aria-label="OCH">
-                        <img src="../assets/client_och.jpg" alt="OCH" class="client-logo h-12 w-auto opacity-90">
+                        <img loading="lazy" decoding="async" src="../assets/client_och.jpg" alt="OCH" class="client-logo h-12 w-auto opacity-90">
                     </a>
                     <a href="https://www.t2s.fr/" target="_blank" rel="noopener noreferrer" aria-label="T2S">
-                        <img src="../assets/client_t2s.png" alt="T2S" class="client-logo h-12 w-auto opacity-90">
+                        <img loading="lazy" decoding="async" src="../assets/client_t2s.png" alt="T2S" class="client-logo h-12 w-auto opacity-90">
                     </a>
                     <a href="https://www.nexa.fr/" target="_blank" rel="noopener noreferrer" aria-label="Nexa">
-                        <img src="../assets/client_nexa.svg" alt="Nexa" class="client-logo h-12 w-auto opacity-90">
+                        <img loading="lazy" decoding="async" src="../assets/client_nexa.svg" alt="Nexa" class="client-logo h-12 w-auto opacity-90">
                     </a>
                 </div>
             </div>
@@ -637,7 +675,7 @@
              <div class="container mx-auto px-6 text-center">
                  <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-8" data-i18n-html="contact.h2">Ready to strengthen your <span class="text-freelabz-yellow">security</span>?</h2>
                  <p class="text-lg text-freelabz-text mb-8 max-w-2xl mx-auto" data-i18n="contact.desc">Contact our experts to discuss your audit, pentest needs or to learn more about our Secator and Secator Cloud tools.</p>
-                 <a href="mailto:contact@freelabz.com" class="bg-freelabz-yellow text-freelabz-text-dark font-semibold py-3 px-8 rounded hover:bg-opacity-80 transition duration-300 text-lg" data-i18n="contact.btn">Contact us</a>
+                 <a href="mailto:sales@freelabz.com" class="bg-freelabz-yellow text-freelabz-text-dark font-semibold py-3 px-8 rounded hover:bg-opacity-80 transition duration-300 text-lg" data-i18n="contact.btn">Contact us</a>
              </div>
         </section>
 
@@ -677,7 +715,8 @@
             <p id="lightbox-title" style="color:#FFE566; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:0.95rem; letter-spacing:0.05em; margin-bottom:10px;">Secator in action !</p>
             <div id="gif-lightbox-frame" class="relative shadow-2xl" style="border: 1px solid rgba(255,229,102,0.25); border-radius: 6px;">
                 <button id="gif-lightbox-close" aria-label="Fermer" style="position:absolute; top:-18px; right:-18px; width:36px; height:36px; background:rgba(255,229,102,0.5); color:#fff; border:none; border-radius:50%; font-size:1.25rem; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">×</button>
-                <img id="gif-lightbox-img" src="" alt="Secator demo" style="display:block; max-width:90vw; max-height:calc(100vh - 5.5rem - 6rem); border-radius:4px;">
+                <img id="gif-lightbox-img" src="" alt="Secator demo" style="display:none; max-width:90vw; max-height:calc(100vh - 5.5rem - 6rem); border-radius:4px;">
+                <video id="gif-lightbox-video" src="" muted="" loop="" playsinline="" controls="" style="display:none; max-width:90vw; max-height:calc(100vh - 5.5rem - 6rem); border-radius:4px;"></video>
             </div>
         </div>
     </div>
@@ -713,6 +752,10 @@
     <footer class="bg-black text-freelabz-text py-8">
         <div class="container mx-auto px-6 text-center text-sm">
             <p data-i18n="footer.copyright">© 2025 Freelabz. All rights reserved.</p>
+            <address class="mt-2" style="font-style: normal; opacity: 0.75;">
+                Freelabz SAS · 29 Avenue Denfert-Rochereau, 42000 Saint-Étienne, France<br>
+                <a href="mailto:sales@freelabz.com" class="hover:text-freelabz-yellow">sales@freelabz.com</a>
+            </address>
             <p class="mt-2">
                 <a href="#" class="hover:text-freelabz-yellow" data-i18n="footer.privacy">Privacy policy</a> |
                 <a href="#" class="hover:text-freelabz-yellow" data-i18n="footer.legal">Legal notice</a>
@@ -756,32 +799,55 @@
             }
         });
 
-        // GIF lightbox
+        // Media lightbox (handles both images and the Secator video)
         const gifLightbox = document.getElementById('gif-lightbox');
         const gifLightboxImg = document.getElementById('gif-lightbox-img');
+        const gifLightboxVideo = document.getElementById('gif-lightbox-video');
         const gifLightboxFrame = document.getElementById('gif-lightbox-frame');
-        function closeLightbox() { gifLightbox.style.display = 'none'; document.body.style.overflow = ''; }
-        document.getElementById('secator-cloud-screenshot').addEventListener('click', function() {
-            gifLightboxImg.src = this.src;
-            document.getElementById('lightbox-title').textContent = 'A scan in Secator Cloud';
-            gifLightbox.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            gifLightboxFrame.classList.remove('lightbox-pop');
-            void gifLightboxFrame.offsetWidth;
-            gifLightboxFrame.classList.add('lightbox-pop');
-        });
-        document.getElementById('secator-gif').addEventListener('click', function() {
-            gifLightboxImg.src = this.src;
-            document.getElementById('lightbox-title').textContent = 'Secator in action !';
+        const secatorVideo = document.getElementById('secator-gif');
+        function openLightbox(title, popFrom) {
+            document.getElementById('lightbox-title').textContent = title;
             gifLightbox.style.display = 'flex';
             document.body.style.overflow = 'hidden';
             gifLightboxFrame.classList.remove('lightbox-pop');
             void gifLightboxFrame.offsetWidth; // force reflow to restart animation
             gifLightboxFrame.classList.add('lightbox-pop');
+        }
+        function closeLightbox() {
+            gifLightbox.style.display = 'none';
+            document.body.style.overflow = '';
+            gifLightboxVideo.pause();
+        }
+        document.getElementById('secator-cloud-screenshot').addEventListener('click', function() {
+            gifLightboxVideo.style.display = 'none';
+            gifLightboxImg.style.display = 'block';
+            gifLightboxImg.src = this.src;
+            openLightbox('A scan in Secator Cloud');
+        });
+        secatorVideo.addEventListener('click', function() {
+            gifLightboxImg.style.display = 'none';
+            gifLightboxVideo.style.display = 'block';
+            gifLightboxVideo.src = this.src;
+            gifLightboxVideo.play();
+            openLightbox('Secator in action !');
         });
         document.getElementById('gif-lightbox-close').addEventListener('click', closeLightbox);
         gifLightbox.addEventListener('click', function(e) { if (e.target === gifLightbox) closeLightbox(); });
         document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+
+        // Play the Secator demo video only once it scrolls into view (keeps it off the critical path)
+        if ('IntersectionObserver' in window) {
+            var vidObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        secatorVideo.play().catch(function(){});
+                    } else {
+                        secatorVideo.pause();
+                    }
+                });
+            }, { threshold: 0.25 });
+            vidObserver.observe(secatorVideo);
+        }
 
         // Scroll indicator — hide on first scroll
         (function() {
@@ -864,7 +930,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Get all links to the contact section and the email contact
             const contactLinks = document.querySelectorAll('a[href="#contact"]');
-            const emailLink = document.querySelector('a[href="mailto:contact@freelabz.com"]');
+            const emailLink = document.querySelector('a[href="mailto:sales@freelabz.com"]');
 
             // Replace email link with modal trigger
             if (emailLink) {

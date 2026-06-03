@@ -88,7 +88,7 @@ if (missing.length) {
 $('html').attr('lang', 'en');
 
 // --- 4. Head metadata (English) ---------------------------------------------
-const TITLE_EN = 'Freelabz - Offensive cybersecurity for everyone';
+const TITLE_EN = 'Freelabz - Audit, pentest & offensive cybersecurity';
 const DESC_EN = 'Freelabz: security audits, pentesting, Cloud & DevOps support and offensive cybersecurity tools like Secator. Protect your business.';
 
 $('title').text(TITLE_EN);
@@ -121,6 +121,9 @@ function deepen(sel, attr) {
 deepen('link[href^="./"]', 'href');
 deepen('script[src^="./"]', 'src');
 deepen('img[src^="./"]', 'src');
+deepen('source[srcset^="./"]', 'srcset');
+deepen('video[src^="./"]', 'src');
+deepen('video[poster^="./"]', 'poster');
 // Logo home link and any in-page anchors stay as-is (#... and / are root-absolute).
 
 // --- 6. Write output ---------------------------------------------------------

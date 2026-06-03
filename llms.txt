@@ -1,0 +1,38 @@
+# Freelabz
+
+> Freelabz is a French offensive-cybersecurity company. We secure digital assets through expert security audits and penetration testing (pentest), guide organizations through their Cloud transition and DevOps/DevSecOps processes, and build open-source security tools such as Secator and the Secator Cloud platform. Our motto: the best defense is a good offense.
+
+## Services
+
+- Audit de surface d'attaque externe (external attack surface audit): asset discovery (subdomains, services, websites), OSINT, initial vulnerability analysis.
+- Audit de code (SAST/DAST): static, dynamic and AI-assisted source-code security analysis, optional CI/CD integration.
+- Audit d'application (web/mobile): in-depth web (API, routes, fuzzing) and mobile (traffic interception) assessments, blackbox or whitebox.
+- Test d'intrusion / Penetration testing (pentest): real-world attack simulation to assess system resilience and identify intrusion paths.
+- Phishing: social-engineering simulation to assess employee resistance.
+- Abonnement annuel proactif (proactive annual subscription): initial pentest, recurring monthly scans, monitoring and remediation management.
+- Accompagnement DevOps: CI/CD pipelines, security integration into deployment (DevSecOps), automation.
+- Accompagnement Cloud: cloud strategy, architecture, setup and infrastructure-as-code (Terraform, Ansible) with a security focus.
+- Formations: practical training in cybersecurity, DevOps, programming (Python, Go) and Linux & network administration.
+
+## Products
+
+- [Secator](https://github.com/freelabz/secator): open-source pentest CLI that orchestrates security tools and automates recon/scan workflows via configurable YAML files.
+- Secator Cloud: configurable offensive-security SaaS platform for running custom scans, managing pentest missions, AI-assisted data analysis and reporting. Self-hosted option available.
+
+## Company
+
+- Legal name: Freelabz SAS (French simplified joint-stock company)
+- SIREN: 990 919 359 · VAT: FR59990919359
+- Registered office: 29 Avenue Denfert-Rochereau, 42000 Saint-Étienne, France
+- Founded: 29 August 2025
+- Founders: Olivier Cervello (President), Wally Chaibi (Managing Director)
+
+## Contact
+
+- Website: https://freelabz.com/
+- English version: https://freelabz.com/en/
+- Email: sales@freelabz.com
+- GitHub: https://github.com/freelabz
+- LinkedIn: https://www.linkedin.com/company/freelabz
+- YouTube: https://www.youtube.com/@FreeLabz
+- X/Twitter: https://x.com/freelabz
